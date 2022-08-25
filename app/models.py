@@ -4,6 +4,7 @@ from app import db
 
 class Species(db.Model):    
     id = db.Column(db.String(), nullable=False, primary_key=True)
+    dex = db.Column(db.String(), nullable=False)
     name = db.Column(db.String(), nullable=False)
     type1 = db.Column(db.String(), nullable=False)
     type2 = db.Column(db.String(), nullable=True)

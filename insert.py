@@ -1,4 +1,4 @@
-from app import db
+from app import db, create_app
 from app.models import Species
 from datetime import datetime
 import sqlalchemy
@@ -15,9 +15,11 @@ def insert_pokemon_species():
     with open("data/pokedex.csv", 'r') as file:
         csvreader = csv.reader(file)
         header = next(csvreader)
+        count = 1
         for row in csvreader:
             # # Name   Type 1  Type 2  Total   HP  Attack  Defense Sp. Atk Sp. Def Speed   Generation  Legendary
-            id = row[0]
+            id = count
+            dex = row[0]
             name = row[1]
             type1 = row[2]
             type2 = row[3]
@@ -28,9 +30,10 @@ def insert_pokemon_species():
             sp_def = row[9]
             speed = row[10]
             gen = row[11]
-            legendary = row[12]
+            legendary = True if row[12] == 'True' else False
             species = Species(
                 id=id,
+                dex=dex,
                 name=name,
                 type1=type1,
                 type2=type2,
@@ -43,9 +46,14 @@ def insert_pokemon_species():
                 gen=gen,
                 legendary=legendary,
             )
+            count += 1
             db.session.add(species)
             db.session.commit()
 
 
 if __name__ == '__main__':
+    app = create_app()
+    app.app_context().push()
+    db.create_all()
     insert_pokemon_species()
+    
