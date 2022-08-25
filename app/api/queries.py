@@ -1,7 +1,7 @@
 from flask import current_app, request
 from app import db
 from app.api import bp
-from app.models import PlayersInfo
+from app.models import Species
 import numpy as np 
 import json
 
