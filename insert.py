@@ -1,5 +1,5 @@
 from app import db, create_app
-from app.models import Species
+from app.models import Species, Pokemon, Trainer
 from datetime import datetime
 import sqlalchemy
 import csv
@@ -50,10 +50,50 @@ def insert_pokemon_species():
             db.session.add(species)
             db.session.commit()
 
+def insert_trainers():
+    rows = []
+    with open("data/trainers.csv", 'r') as file:
+        csvreader = csv.reader(file)
+        header = next(csvreader)
+        for row in csvreader:
+            id = row[0]
+            name = row[1]
+            trainer = Trainer(
+                id=id,
+                name=name,
+            )
+            db.session.add(trainer)
+            db.session.commit()
+
+def insert_pokemon():
+    rows = []
+    with open("data/pokemon.csv", 'r') as file:
+        csvreader = csv.reader(file)
+        header = next(csvreader)
+        count = 1
+        for row in csvreader:
+            id = count
+            trainer_id = row[0]
+            place = row[1]
+            species_name = row[2]
+            level = row[3]
+            pokemon = Pokemon(
+                id=id,
+                trainer_id=trainer_id,
+                place=place,
+                species_name=species_name,
+                level=level,
+            )
+            count += 1
+            db.session.add(pokemon)
+            db.session.commit()
+
 
 if __name__ == '__main__':
     app = create_app()
     app.app_context().push()
     db.create_all()
     insert_pokemon_species()
+    insert_trainers()
+    insert_pokemon()
     

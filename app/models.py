@@ -19,3 +19,16 @@ class Species(db.Model):
 
     def __repr__(self):
         return '<Species {}>'.format(self.id)
+
+class Trainer(db.Model):
+    id = db.Column(db.String(), nullable=False, primary_key=True)
+    name = db.Column(db.String(), nullable=False)
+
+class Pokemon(db.Model):
+    id = db.Column(db.String(), nullable=False, primary_key=True)
+    trainer_id = db.Column(db.String(), db.ForeignKey('trainer.id'), nullable=False)
+    place = db.Column(db.Integer, nullable=False)
+    species_name = db.Column(db.String(), nullable=False)
+    level = db.Column(db.Integer, nullable=False)
+
+
