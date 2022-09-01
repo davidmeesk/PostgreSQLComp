@@ -73,12 +73,14 @@ def insert_pokemon():
         count = 1
         for row in csvreader:
             id = count
+            species_id = 1
             trainer_id = row[0]
             place = row[1]
             species_name = row[2]
             level = row[3]
             pokemon = Pokemon(
                 id=id,
+                species_id=species_id,
                 trainer_id=trainer_id,
                 place=place,
                 species_name=species_name,

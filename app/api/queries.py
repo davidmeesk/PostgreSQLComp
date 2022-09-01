@@ -5,6 +5,22 @@ from app.models import Species
 import numpy as np 
 import json
 
+@bp.route('/adjust', methods=['GET'])
+def set_pokemon():
+    results = db.engine.execute("""
+        UPDATE pokemon
+            SET species_id = S.id
+        FROM species S
+        WHERE pokemon.species_name = S.name; 
+    """)
+    results2 = db.engine.execute("""
+        ALTER TABLE pokemon
+        DROP COLUMN species_name; 
+    """)
+    response = {
+        }
+    return json.dumps(response)
+
 # JOGADORES + ALTOS
 
 @bp.route('/tallest', methods=['GET'])

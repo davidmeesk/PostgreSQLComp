@@ -19029,8 +19029,8 @@ trainerID,place,pokename,pokelevel,type1,type2,hp,maxhp,attack,defense,spatk,spd
 7645,0,Pidgey,19,Normal,Flying,51,51,28,27,25,25,33
 7645,1,Rattata,19,Normal,None,47,47,33,25,21,25,39
 7645,2,Meowth,19,Normal,None,51,51,28,25,27,27,46
-7645,3,Nidoran,19,Poison,None,56,56,29,31,27,27,27
-7645,4,Nidoran,19,Poison,None,53,53,33,27,27,27,30
+7645,3,Nidoran♂,19,Poison,None,56,56,29,31,27,27,27
+7645,4,Nidoran♂,19,Poison,None,53,53,33,27,27,27,30
 7646,0,Meowth,24,Normal,None,61,61,35,30,32,32,56
 7646,1,Meowth,24,Normal,None,61,61,35,30,32,32,56
 7646,2,Meowth,24,Normal,None,61,61,35,30,32,32,56
