@@ -25,7 +25,7 @@ def set_pokemon():
 # pokemons
 
 @bp.route('/pokedex', methods=['GET'])
-def get_tallest_players():
+def get_pokedex():
     results = db.engine.execute("""
         SELECT *
         FROM species
@@ -46,6 +46,32 @@ def get_tallest_players():
             "speed":result[10],
             "gen":result[11],
             "legendary":result[12],
+        })
+    return json.dumps(response)
+
+@bp.route('/stats', methods=['GET'])
+def get_stats():
+    results = db.engine.execute("""
+        SELECT POK.level, SP.dex, SP.name, SP.type1, SP.type2, SP.\"HP\", SP.attack, SP.defense, SP.sp_atk, SP.sp_def, SP.speed
+        FROM species SP
+        LEFT JOIN pokemon POK
+        ON SP.id = POK.species_id
+        ORDER BY dex ASC
+    """)
+    response = []
+    for result in results:
+        response.append({
+            "level":result[0],
+            "dex":result[1],
+            "name":result[2],
+            "type1":result[3],
+            "type2":result[4],
+            "HP":result[5],
+            "attack":result[6],
+            "defense":result[7],
+            "sp_atk":result[8],
+            "sp_def":result[9],
+            "speed":result[10],
         })
     return json.dumps(response)
 
