@@ -1,0 +1,50 @@
+[
+    {
+        "id": [
+            {
+                "Plan": {
+                    "Node Type": "Seq Scan",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Relation Name": "species",
+                    "Alias": "species",
+                    "Startup Cost": 0.0,
+                    "Total Cost": 17.0,
+                    "Plan Rows": 65,
+                    "Plan Width": 53,
+                    "Actual Startup Time": 0.028,
+                    "Actual Total Time": 0.104,
+                    "Actual Rows": 65,
+                    "Actual Loops": 1,
+                    "Filter": "legendary",
+                    "Rows Removed by Filter": 735,
+                    "Shared Hit Blocks": 9,
+                    "Shared Read Blocks": 0,
+                    "Shared Dirtied Blocks": 0,
+                    "Shared Written Blocks": 0,
+                    "Local Hit Blocks": 0,
+                    "Local Read Blocks": 0,
+                    "Local Dirtied Blocks": 0,
+                    "Local Written Blocks": 0,
+                    "Temp Read Blocks": 0,
+                    "Temp Written Blocks": 0
+                },
+                "Planning": {
+                    "Shared Hit Blocks": 0,
+                    "Shared Read Blocks": 0,
+                    "Shared Dirtied Blocks": 0,
+                    "Shared Written Blocks": 0,
+                    "Local Hit Blocks": 0,
+                    "Local Read Blocks": 0,
+                    "Local Dirtied Blocks": 0,
+                    "Local Written Blocks": 0,
+                    "Temp Read Blocks": 0,
+                    "Temp Written Blocks": 0
+                },
+                "Planning Time": 0.048,
+                "Triggers": [],
+                "Execution Time": 0.117
+            }
+        ]
+    }
+]
