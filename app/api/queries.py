@@ -113,3 +113,24 @@ def legendaries():
             "legendary":result[12],
         })
     return json.dumps(response)
+
+@bp.route('/teams', methods=['GET'])
+def teams():
+    results = db.engine.execute("""
+        SELECT T.id, T.name, P.id, P.species_id, P.place, P.level
+        FROM trainer T
+        LEFT JOIN pokemon P
+        ON T.id = P.trainer_id
+        ORDER BY T.id ASC
+    """)
+    response = []
+    for result in results:
+        response.append({
+            "trainer_id":result[0],
+            "trainer_name":result[1],
+            "pokemon_id":result[2],
+            "species_id":result[3],
+            "pokemon_place":result[4],
+            "pokemon_level":result[5],
+        })
+    return json.dumps(response)
