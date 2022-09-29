@@ -134,3 +134,20 @@ def teams():
             "pokemon_level":result[5],
         })
     return json.dumps(response)
+
+@bp.route('/higherLevel', methods=['GET'])
+def higher_level():
+    results = db.engine.execute("""
+        SELECT *
+        FROM pokemon
+        WHERE level > 40
+    """)
+    response = []
+    for result in results:
+        response.append({
+            "pokemon_id":result[0],
+            "species_id":result[1],
+            "pokemon_place":result[2],
+            "pokemon_level":result[3],
+        })
+    return json.dumps(response)
